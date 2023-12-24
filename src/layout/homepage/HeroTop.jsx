@@ -4,7 +4,7 @@ const HeroTop = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="container mx-auto p-8 pt-0 flex items-center flex-col flex-col-reverse md:flex-row">
+    <div className="container mx-auto max-w-7xl p-8 pt-0 flex items-center flex-col flex-col-reverse md:flex-row">
       <div className="flex flex-col justify-between h-full gap-5">
         <h2 className="text-6xl text-white mt-10">{t("hero.passion")}</h2>
 
