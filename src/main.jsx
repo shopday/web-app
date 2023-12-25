@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "shopday",
+    path: "/shopday",
     element: <Shopday />,
   },
 ]);
