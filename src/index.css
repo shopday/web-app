@@ -5,3 +5,9 @@
 * {
   font-family: "Bricolage Grotesque", sans-serif;
 }
+
+@layer base {
+  a {
+    @apply text-brand;
+  }
+}

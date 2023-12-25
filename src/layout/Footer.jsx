@@ -1,6 +1,8 @@
+import { FaInstagram } from "react-icons/fa";
+
 const Footer = () => {
   return (
-    <footer className="relative mx-auto max-w-7xl mt-20">
+    <footer className="relative mx-auto max-w-7xl">
       <h3 className="absolute top-10 left-10 text-white text-lg">shopday</h3>
       <div className="max-h-[300px] md:max-h-[500px] overflow-hidden">
         <img src="./images/footer.jpg" alt="shopday footer" />
@@ -10,11 +12,24 @@ const Footer = () => {
           Got suggestions or
           <br /> questions?
         </h4>
-        <p className="font-normal text-gray-600">
-          Reach out via email:
-          <br />
-          <a href="mailto:hello@shopday.io">hello@shopday.io</a>
-        </p>
+        <div className="font-normal text-gray-600 flex flex-col">
+          <div className="flex flex-col">
+            Reach out via email:
+            <br />
+            <div>
+              <a href="mailto:hello@shopday.io">hello@shopday.io</a>
+            </div>
+            <div>
+              <a
+                href="https://www.instagram.com/shopdayio/"
+                className="inline-flex items-center gap-1"
+              >
+                Instagram
+                <FaInstagram />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

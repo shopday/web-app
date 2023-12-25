@@ -2,5 +2,8 @@
   "register": "Đăng ký",
   "hero": {
     "passion": "Đi theo your passion!"
+  },
+  "homepage": {
+    "latest-enterprise": "Doanh nghiệp mới nhất"
   }
 }
