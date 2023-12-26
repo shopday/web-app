@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./i18n.js";
 import App from "./App.jsx";
 import "./index.css";
+import "./config/appInit.js";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Shopday from "./company/Shopday.jsx";

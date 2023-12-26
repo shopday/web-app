@@ -1,0 +1,16 @@
+{
+  "register": "Register",
+  "reach-out": "Reach out via email",
+  "hero": {
+    "passion": "Follow your passion!"
+  },
+  "homepage": {
+    "latest-enterprise": "Latest enterprises"
+  },
+  "company": {
+    "shopday": {
+      "bio": "We offer SMEs a rapid, effortless, and cost-effective advertising solution. Our goal is to amplify your online presence and boost virality. Experience it now by clicking the 'Register' link.",
+      "solution": "<b>Solution:</b> Advertising, Internet product"
+    }
+  }
+}

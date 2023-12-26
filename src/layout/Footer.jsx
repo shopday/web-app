@@ -1,6 +1,9 @@
 import { FaInstagram } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import { MdOutlineEmail } from "react-icons/md";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="relative mx-auto max-w-7xl">
       <h3 className="absolute top-10 left-10 text-white text-lg">shopday</h3>
@@ -14,18 +17,22 @@ const Footer = () => {
         </h4>
         <div className="font-normal text-gray-600 flex flex-col">
           <div className="flex flex-col">
-            Reach out via email:
-            <br />
             <div>
-              <a href="mailto:hello@shopday.io">hello@shopday.io</a>
+              <a
+                href="mailto:hello@shopday.io"
+                className="inline-flex items-center gap-1"
+              >
+                <MdOutlineEmail />
+                hello@shopday.io
+              </a>
             </div>
             <div>
               <a
                 href="https://www.instagram.com/shopdayio/"
                 className="inline-flex items-center gap-1"
               >
-                Instagram
                 <FaInstagram />
+                Instagram
               </a>
             </div>
           </div>
