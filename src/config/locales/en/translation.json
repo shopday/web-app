@@ -1,6 +1,8 @@
 {
   "register": "Register",
   "reach-out": "Reach out via email",
+  "solution": "Solution",
+  "disclaimer": "Disclaimer",
   "hero": {
     "passion": "Follow your passion!"
   },
@@ -10,7 +12,11 @@
   "company": {
     "shopday": {
       "bio": "We offer SMEs a rapid, effortless, and cost-effective advertising solution. Our goal is to amplify your online presence and boost virality. Experience it now by clicking the 'Register' link.",
-      "solution": "<b>Solution:</b> Advertising, Internet product"
+      "solution": "Advertising, Internet product"
     }
+  },
+  "site": {
+    "title": "Shopday.io | Enterprise Portal | SME",
+    "description": "Shopday is an innovative internet company dedicated to empowering SMEs with a range of dynamic solutions. Our offerings span diverse services, encompassing advertising, data analysis, and beyond. We are committed to equipping small and medium-sized enterprises with the tools and insights they need to thrive in the digital landscape."
   }
 }

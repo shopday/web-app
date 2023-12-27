@@ -1,7 +1,6 @@
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import { useTranslation } from "react-i18next";
-
+import config from "../config/config";
+import { Helmet } from "react-helmet";
 import { Popover } from "@headlessui/react";
 
 import {
@@ -9,21 +8,23 @@ import {
   PhoneIcon,
   EnvelopeIcon,
   ChatBubbleOvalLeftIcon,
+  QuestionMarkCircleIcon,
   GlobeAltIcon,
 } from "@heroicons/react/24/solid";
 
 function Shopday() {
   const { t } = useTranslation();
   return (
-    <main className="bg-brand">
-      <Header />
-
-      <div className="flex flex-col gap-5 p-6">
+    <>
+      <Helmet>
+        <title>Shopday | {config.site.title}</title>
+      </Helmet>
+      <div className=" max-w-6xl mx-auto flex flex-col gap-5 p-6">
         <div>
           <img
             src="https://media-public.canva.com/MADQ5FB0hZs/1/screen.jpg"
             alt=""
-            className="rounded-2xl"
+            className="rounded-2xl w-full"
           />
         </div>
         <div className="bg-white rounded-2xl p-10 flex justify-between items-start gap-5">
@@ -34,9 +35,12 @@ function Shopday() {
                 <Popover.Button>
                   <CheckBadgeIcon className="text-blue-400 w-6" />
                 </Popover.Button>
-                <Popover.Panel className="absolute left-7 border-2 rounded-xl border-green-400 p-4 bg-white w-[300px]">
-                  <p className="prose font-normal">
+                <Popover.Panel className="absolute left-7 border-2 rounded-xl border-green-400 p-4 bg-white w-screen md:w-[300px] max-w-[300px]">
+                  <p className="prose font-normal flex items-start">
                     Verify based on phone, email and website.
+                    <a href="/disclaimer">
+                      <QuestionMarkCircleIcon className="text-green-500 w-6" />
+                    </a>
                   </p>
                 </Popover.Panel>
               </Popover>
@@ -44,7 +48,7 @@ function Shopday() {
             <div className="prose">
               <p>{t("company.shopday.bio")}</p>
               <p>
-                <b>Giải pháp:</b> Quảng cáo, bán sản phẩm.
+                <b>{t("solution")}:</b> {t("company.shopday.solution")}
               </p>
             </div>
           </div>
@@ -58,7 +62,7 @@ function Shopday() {
         </div>{" "}
       </div>
 
-      <div className="flex p-10 w-full justify-evenly">
+      <div className="flex p-10 max-w-6xl mx-auto justify-evenly">
         <a href="tel:0911510641" className="text-black">
           <PhoneIcon className="w-11" />
         </a>
@@ -73,9 +77,7 @@ function Shopday() {
           <GlobeAltIcon className="w-11" />
         </a>
       </div>
-
-      <Footer />
-    </main>
+    </>
   );
 }
 

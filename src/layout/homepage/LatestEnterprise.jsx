@@ -5,7 +5,7 @@ const LatestEnterprise = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="container mx-auto max-w-7xl p-8 pt-0 flex items-center flex-col bg-brand-BG">
+    <div className="container mx-auto p-8 pt-0 flex items-center flex-col bg-brand-BG">
       <h2 className="text-4xl text-gray-800 my-10">
         {t("homepage.latest-enterprise")}
       </h2>

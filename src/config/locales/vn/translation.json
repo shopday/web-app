@@ -1,6 +1,8 @@
 {
   "register": "Đăng ký",
   "reach-out": "Liên hệ qua email",
+  "solution": "Giải pháp",
+  "disclaimer": "Miễn trừ trách nhiệm",
   "hero": {
     "passion": "Đi theo your passion!"
   },
@@ -10,7 +12,11 @@
   "company": {
     "shopday": {
       "bio": "Chúng tôi cung cấp một giải pháp quảng cáo nhanh chóng, dễ dàng và chi phí hiệu quả cho các doanh nghiệp vừa và nhỏ. Mục tiêu của chúng tôi là tăng cường sự hiện diện của bạn trực tuyến và thúc đẩy tính lan truyền. Trải nghiệm ngay bây giờ bằng cách nhấp vào liên kết 'Đăng ký'",
-      "solution": "<b>Gải pháp</b>: Quảng cáo, Sản phẩm Internet "
+      "solution": "Quảng cáo, Sản phẩm Internet "
     }
+  },
+  "site": {
+    "title": "Shopday.io | Giải pháp portal và công nghệ cho doanh nghiệp vừa và nhỏ.",
+    "description": "Shopday là một công ty internet độc đáo, cam kết đem đến cho doanh nghiệp vừa và nhỏ một loạt các giải pháp động. Các dịch vụ của chúng tôi bao gồm quảng cáo, phân tích dữ liệu và những ứng dụng đa dạng khác. Chúng tôi cam kết trang bị cho doanh nghiệp vừa và nhỏ những công cụ và thông tin cần thiết để phát triển mạnh mẽ trong môi trường kỹ thuật số."
   }
 }
