@@ -6,15 +6,26 @@ import "./config/appInit.js";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Shopday from "./company/Shopday.jsx";
+import Disclaimer from "./pages/Disclaimer.jsx";
+import Homepage from "./pages/Homepage.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
-  },
-  {
-    path: "/shopday",
-    element: <Shopday />,
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+      },
+      {
+        path: "/shopday",
+        element: <Shopday />,
+      },
+      {
+        path: "/disclaimer",
+        element: <Disclaimer />,
+      },
+    ],
   },
 ]);
 
