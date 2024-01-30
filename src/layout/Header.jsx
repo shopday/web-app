@@ -12,9 +12,14 @@ const Header = () => {
         <a href="/" className="-m-1.5 p-1.5 text-black">
           <h1 className="text-2xl font-semibold">shopday</h1>
         </a>
-        <button className="text-black" onClick={() => toggleLanguage()}>
-          {nextLanguage}
-        </button>
+        <div>
+          <a href="/register" className="bp5-button">
+            Register
+          </a>
+          <button className="text-black" onClick={() => toggleLanguage()}>
+            {nextLanguage}
+          </button>
+        </div>
       </nav>
     </header>
   );

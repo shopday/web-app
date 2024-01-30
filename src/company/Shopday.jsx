@@ -1,19 +1,24 @@
 import { useTranslation } from "react-i18next";
-import config from "../config/config";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Popover } from "@headlessui/react";
+
+import { usePopper } from "react-popper";
 
 import {
   CheckBadgeIcon,
   PhoneIcon,
   EnvelopeIcon,
-  ChatBubbleOvalLeftIcon,
   QuestionMarkCircleIcon,
   GlobeAltIcon,
 } from "@heroicons/react/24/solid";
+import { useEffect, useState } from "react";
 
 function Shopday() {
   const { t } = useTranslation();
+
+  const [verifyBtn, setVerifyBtn] = useState();
+  const [verifyPopup, setVerifyPopup] = useState();
+
   return (
     <>
       <Helmet>
@@ -32,10 +37,13 @@ function Shopday() {
             <h2 className="text-brand font-bold mb-10 text-xl flex items-center gap-2">
               <div>shopday</div>
               <Popover className="relative flex">
-                <Popover.Button>
+                <Popover.Button ref={setVerifyBtn}>
                   <CheckBadgeIcon className="text-blue-400 w-6" />
                 </Popover.Button>
-                <Popover.Panel className="absolute left-7 border-2 rounded-xl border-green-400 p-4 bg-white w-screen md:w-[300px] max-w-[300px]">
+                <Popover.Panel
+                  ref={setVerifyPopup}
+                  className="border-2 rounded-xl border-green-400 p-4 bg-white max-w-[300px]"
+                >
                   <p className="prose font-normal flex items-start">
                     Verify based on phone, email and website.
                     <a href="/disclaimer">
