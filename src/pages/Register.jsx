@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { FormField, TextInput, Form, Box, Button } from "grommet";
-
+import { useSelector, useDispatch } from "react-redux";
 const IAM_API_URL = import.meta.env.VITE_IAM_API_URL;
-
+import { useNavigate } from "react-router-dom";
 import { Hide, View } from "grommet-icons";
 
 import AxiosInstance from "../lib/axios.js";
@@ -18,13 +18,21 @@ const Register = () => {
   const [reveal, setReveal] = useState(false);
 
   const [data, setData] = useState(null);
-
+  const navigate = useNavigate();
   const register = async () => {
     const axios = new AxiosInstance(IAM_API_URL);
     const test = await axios.post("/company");
   };
 
-  useEffect(() => {}, []);
+  const { isAuthenticated } = useSelector((state) => ({
+    isAuthenticated: state.authentication.isAuthenticated,
+  }));
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
 
   return (
     <>

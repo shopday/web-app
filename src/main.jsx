@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import App from "./AppLayout.jsx";
+import UserLayout from "./user/UserLayout.jsx";
 import "./index.css";
 import "./config/appInit.js";
 
@@ -10,6 +11,9 @@ import Disclaimer from "./pages/Disclaimer.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
+import ProtectedRoutes from "./pages/ProtectedRoutes.jsx";
+import UserDashboard from "./user/layout/UserDashboard.jsx";
+import PageLayout from "./user/layout/PageLayout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
+        index: true,
       },
       {
         path: "/shopday",
@@ -34,6 +39,31 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+    ],
+  },
+  {
+    element: <UserLayout />,
+    children: [
+      {
+        path: "user",
+        element: <ProtectedRoutes />,
+        children: [
+          {
+            path: "dashboard",
+            element: <UserDashboard />,
+          },
+          {
+            path: "app",
+            element: <PageLayout />,
+            children: [
+              {
+                path: "companies",
+                element: <h3>Hello</h3>,
+              },
+            ],
+          },
+        ],
       },
     ],
   },

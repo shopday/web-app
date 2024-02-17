@@ -29,5 +29,8 @@
       "email": "Email",
       "password": "Password"
     }
+  },
+  "user": {
+    "dashboard": "Dashboard"
   }
 }

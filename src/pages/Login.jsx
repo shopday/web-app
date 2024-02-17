@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { FormField, TextInput, Form, Box, Button } from "grommet";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../lib/reducer/authenticationSlice";
+import { useNavigate } from "react-router-dom";
 
 import { Formik } from "formik";
 
@@ -26,6 +27,8 @@ const Login = () => {
 
   const axios = new AxiosInstance(IAM_API_URL);
 
+  const navigate = useNavigate();
+
   const loginSubmit = async (values) => {
     axios
       .post(API_PATH + LOGIN_URL, values)
@@ -36,8 +39,9 @@ const Login = () => {
           return;
         }
         const token = res?.data?.token;
+        const name = res?.data?.name;
         if (token != null) {
-          dispath(login(token));
+          dispath(login({ token, name }));
         }
       })
       .catch((error) => {
@@ -45,12 +49,16 @@ const Login = () => {
       });
   };
 
-  // const { isAuthenticated, token } = useSelector((state) => ({
-  //   isAuthenticated: state.authentication.isAuthenticated,
-  //   token: state.authentication.token,
-  // }));
+  const { isAuthenticated, token } = useSelector((state) => ({
+    isAuthenticated: state.authentication.isAuthenticated,
+    token: state.authentication.token,
+  }));
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
 
   return (
     <>

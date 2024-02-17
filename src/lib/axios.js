@@ -1,34 +1,33 @@
 import axios, { Axios } from "axios";
 import Cookies from "js-cookie";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_IAM_API_URL;
 
 class AxiosInstance {
+
   commonHeaders = {
     "Content-Type": "application/json",
     Accept: "application/json",
-  };
+  };  
 
   axiosInstance = null;
 
-  constructor(baseURL, config) {
-    if (baseURL !== null) {
-      this.axiosInstance = axios.create({
-        baseURL: baseURL,
-        headers: {
-          ...this.commonHeaders,
-        },
-      });
-    } else {
-      this.axiosInstance = axios.create({
-        baseurl: API_URL,
-        headers: {
-          ...this.commonheaders,
-          authorization: `bearer ${Cookies.get("token")}`,
-        },
-      });
-    }
+  constructor() {
+    this.axiosInstance = axios.create({
+      baseURL: API_URL,
+      headers: {
+        ...this.commonHeaders
+    }})
   }
+
+  addToken(token) {
+    this.axiosInstance.interceptors.request.use(function (config){
+      config.headers.Authorization = `Bearer ${token}`;
+      return config;
+    })
+  }
+
+
 
   async get(path, body, config) {
     try {
