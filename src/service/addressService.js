@@ -10,17 +10,12 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const axios = new AxiosInstance();
 
-
-export const getCompanies = async () => {
-  axios.addToken(user?.token)
+export const getProvinces = async () => {
+  const TIKI_API_URL = "https://tiki.vn/api/v2/directory/regions?country_id=vn";
   return await axios
-    .get(API_PATH + COMPANY_URL)
+    .get(TIKI_API_URL)
     .then((res) => {
-      if (!res.successful) {
-        toast(res.message + " " + res.exception);
-        return;
-      }
-      return res.data
+      return res;
     })
     .catch((error) => {
       console.log("Cannot login", error);

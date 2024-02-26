@@ -13,7 +13,9 @@ import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
 import ProtectedRoutes from "./pages/ProtectedRoutes.jsx";
 import UserDashboard from "./user/layout/UserDashboard.jsx";
-import PageLayout from "./user/layout/PageLayout.jsx";
+import PageLayout from "./user/layout/DashboarPageLayout.jsx";
+import Companies from "./user/pages/Companies.jsx";
+import DashboardPageLayout from "./user/layout/DashboarPageLayout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,11 +57,11 @@ const router = createBrowserRouter([
           },
           {
             path: "app",
-            element: <PageLayout />,
+            element: <DashboardPageLayout />,
             children: [
               {
                 path: "companies",
-                element: <h3>Hello</h3>,
+                element: <Companies />,
               },
             ],
           },

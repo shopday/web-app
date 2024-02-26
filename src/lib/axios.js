@@ -4,11 +4,10 @@ import Cookies from "js-cookie";
 const API_URL = import.meta.env.VITE_IAM_API_URL;
 
 class AxiosInstance {
-
   commonHeaders = {
     "Content-Type": "application/json",
     Accept: "application/json",
-  };  
+  };
 
   axiosInstance = null;
 
@@ -16,18 +15,17 @@ class AxiosInstance {
     this.axiosInstance = axios.create({
       baseURL: API_URL,
       headers: {
-        ...this.commonHeaders
-    }})
+        ...this.commonHeaders,
+      },
+    });
   }
 
   addToken(token) {
-    this.axiosInstance.interceptors.request.use(function (config){
+    this.axiosInstance.interceptors.request.use(function (config) {
       config.headers.Authorization = `Bearer ${token}`;
       return config;
-    })
+    });
   }
-
-
 
   async get(path, body, config) {
     try {

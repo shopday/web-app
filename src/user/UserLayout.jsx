@@ -19,7 +19,7 @@ function UserLayout() {
       <HelmetProvider>
         <Provider store={store}>
           <Grommet theme={myTheme}>
-            <main className="bg-brand">
+            <main>
               <Header />
               <Outlet />
             </main>

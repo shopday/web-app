@@ -4,10 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getCompanies } from "../../service/companyService";
 import { Box } from "grommet";
 import { DataTable } from "grommet";
-import { LeftNav } from "./LeftNav";
 import { Outlet } from "react-router-dom";
 
-const PageLayout = () => {
+const DashboardPageLayout = () => {
   const { t, i18n } = useTranslation();
   const lng = i18n.language;
 
@@ -31,7 +30,6 @@ const PageLayout = () => {
       </Helmet>
       <div className="container mx-auto p-5">
         <div className="p-4 rounded-2xl gap-4 w-full">
-          <h3>Page title</h3>
           <Outlet />
         </div>
       </div>
@@ -47,4 +45,4 @@ const RightContent = ({ data: companies, columns }) => {
   );
 };
 
-export default PageLayout;
+export default DashboardPageLayout;
