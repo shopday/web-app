@@ -1,5 +1,6 @@
 {
   "register": "Register",
+  "login": "Login",
   "reach-out": "Reach out via email",
   "solution": "Solution",
   "disclaimer": "Disclaimer",
@@ -18,5 +19,18 @@
   "site": {
     "title": "Shopday.io | Enterprise Portal | SME",
     "description": "Shopday is an innovative internet company dedicated to empowering SMEs with a range of dynamic solutions. Our offerings span diverse services, encompassing advertising, data analysis, and beyond. We are committed to equipping small and medium-sized enterprises with the tools and insights they need to thrive in the digital landscape."
+  },
+  "register-page": {
+    "company_name": "Company name",
+    "company_address": "Company address",
+    "company_phone": "Company phone",
+    "person": {
+      "name": "Your name",
+      "email": "Email",
+      "password": "Password"
+    }
+  },
+  "user": {
+    "dashboard": "Dashboard"
   }
 }

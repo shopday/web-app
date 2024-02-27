@@ -11,8 +11,7 @@ const HeroTop = () => {
 
         <div>
           <a
-            href="https://forms.gle/EGRVHBLG3a7QEDic9"
-            target="_blank"
+            href="/register"
             className="text-white text-lg gap-4 inline-flex items-center"
           >
             {t("register")}

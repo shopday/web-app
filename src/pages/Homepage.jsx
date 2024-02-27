@@ -1,6 +1,6 @@
 import HeroTop from "../layout/homepage/HeroTop";
 import LatestEnterprise from "../layout/homepage/LatestEnterprise";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 import { useTranslation } from "react-i18next";
 
