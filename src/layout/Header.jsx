@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { logout } from "../lib/reducer/authenticationSlice";
 import { FormDown } from "grommet-icons";
+import { useTranslation } from "react-i18next";
 
 const HeaderComponent = () => {
   const { isAuthenticated, name } = useSelector((state) => ({
@@ -17,9 +18,8 @@ const HeaderComponent = () => {
     dispath(logout());
   }
 
-  console.log(isAuthenticated);
-
   const { nextLanguage, toggleLanguage } = useLanguage();
+  const { t } = useTranslation();
 
   return (
     <header className="mx-auto container">
@@ -36,7 +36,7 @@ const HeaderComponent = () => {
           ) : (
             [
               <Anchor href="/login" color="black" key="login" weight="normal">
-                Login
+                {t("login")}
               </Anchor>,
               <Anchor
                 href="/register"
@@ -44,7 +44,7 @@ const HeaderComponent = () => {
                 key="register"
                 weight="normal"
               >
-                Register
+                {t("register")}
               </Anchor>,
             ]
           )}
@@ -54,7 +54,7 @@ const HeaderComponent = () => {
             onClick={() => toggleLanguage()}
             weight="normal"
           >
-            {nextLanguage}
+            {t(nextLanguage)}
           </Anchor>
         </div>
       </nav>
