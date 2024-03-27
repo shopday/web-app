@@ -1,5 +1,6 @@
 import axios, { Axios } from "axios";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 const API_URL = import.meta.env.VITE_IAM_API_URL;
 
@@ -34,6 +35,7 @@ class AxiosInstance {
     } catch (error) {
       // Handle error appropriately
       console.error("GET request error:", error);
+      // toast.error("Fetching issue. " + error.message);
       throw error;
     }
   }

@@ -18,6 +18,17 @@
       "solution": "Quảng cáo, Sản phẩm Internet "
     }
   },
+  "register-page": {
+    "company_name": "Company name",
+    "company_address": "Company address",
+    "company_phone": "Company phone",
+    "person": {
+      "name": "Your name",
+      "email": "Email",
+      "username": "Username",
+      "password": "Password"
+    }
+  },
   "site": {
     "title": "Shopday.io | Giải pháp portal và công nghệ cho doanh nghiệp vừa và nhỏ.",
     "description": "Shopday là một công ty internet độc đáo, cam kết đem đến cho doanh nghiệp vừa và nhỏ một loạt các giải pháp động. Các dịch vụ của chúng tôi bao gồm quảng cáo, phân tích dữ liệu và những ứng dụng đa dạng khác. Chúng tôi cam kết trang bị cho doanh nghiệp vừa và nhỏ những công cụ và thông tin cần thiết để phát triển mạnh mẽ trong môi trường kỹ thuật số."

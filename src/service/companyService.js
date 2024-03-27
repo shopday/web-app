@@ -22,12 +22,28 @@ export const getCompanies = async () => {
       return res;
     })
     .catch((error) => {
-      console.log("Cannot login", error);
+        toast(error);
     });
 };
 
 //TODO: adding token auto when call post API?
-export const createCompany = async () => {
+const createCompany = async (values) => {
   axios.addToken(user?.token);
-  return await axios.post(API_PATH + COMPANY_URL).then((res) => {});
+  return await axios.post(API_PATH + COMPANY_URL, values)
+  .then((res) => {
+    if (!res.successful) {
+      toast(res.exception);
+      return;
+    }
+    return res;
+  })
+  .catch((error) => {
+    console.log("Cannot login", error);
+  });
+
 };
+
+export const companyService = {
+  getCompanies,
+  createCompany,
+}

@@ -10,31 +10,32 @@ const Footer = () => {
       <div className="max-h-[300px] md:max-h-[500px] overflow-hidden">
         <img src="/images/footer.jpg" alt="shopday footer" />
       </div>
-      <div className="bg-brand-BG p-10">
-        <h4 className="text-2xl font-bold mb-4">
-          Got suggestions or
-          <br /> questions?
-        </h4>
-        <div className="font-normal text-gray-600 flex flex-col">
-          <div className="flex flex-col gap-2">
-            <a
-              href="mailto:hello@shopday.io"
-              className="inline-flex items-center gap-1"
-            >
-              <MdOutlineEmail />
-              hello@shopday.io
-            </a>
-            <a
-              href="https://www.instagram.com/shopdayio/"
-              className="inline-flex items-center gap-1"
-            >
-              <FaInstagram />
-              Instagram
-            </a>
-            <a href="/disclaimer" className="">
-              {t("disclaimer")}
-            </a>
-          </div>
+      <div className="bg-brand-BG p-10 flex gap-10">
+        <div>
+          <h4 className="font-bold mb-4">Contacts</h4>
+          <ul className="space-y-2">
+            <li>
+              <a href="mailto:hello@shopday.io">hello@shopday.io</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/shopdayio/" className="">
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="/disclaimer" className="">
+                {t("disclaimer")}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-bold mb-4">Developer</h4>
+          <ul className="space-y-2">
+            <li>
+              <a href="#">Directory API</a>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

@@ -15,11 +15,14 @@ import {
 import React, { useState } from "react";
 import { Formik } from "formik";
 import ReactModal from "react-modal";
+
 ReactModal.setAppElement("#root");
 import { useQuery } from "@tanstack/react-query";
-import { getProvinces } from "../../../service/addressService";
+import { addressService } from "../../../service/addressService";
+import { companyService } from "../../../service/companyService";
+import GlobalSpinner from "../../../components/Spinner";
 
-export default function FormNew({ modalIsOpen, closeModal }) {
+export default function FormNew({ modalIsOpen, closeModal, refetchData }) {
   const customStyles = {
     content: {
       top: "50%",
@@ -31,26 +34,29 @@ export default function FormNew({ modalIsOpen, closeModal }) {
     },
   };
 
-  const { data, isLoading } = useQuery({
+  const [provinceValue, setProvinceValue] = useState();
+  const [districtValue, setDistrictValue] = useState();
+  const [wardValue, setWardValue] = useState();
+
+  const { data: provinces, isLoading } = useQuery({
     queryKey: ["provinces"],
-    queryFn: getProvinces,
+    queryFn: addressService.getProvinces,
   });
 
-  const [provinceValue, setProvinceValue] = useState();
+  const { data: districts, isDistrictLoading } = useQuery({
+    queryKey: ["districts", provinceValue],
+    queryFn: () => addressService.getAllDistricts(provinceValue),
+    enabled: !!provinceValue,
+  });
+
+  const { data: wards, isWardsLoading } = useQuery({
+    queryKey: ["wards", districtValue],
+    queryFn: () => addressService.getAllWards(districtValue),
+    enabled: !!districtValue,
+  });
 
   if (isLoading) {
-    return (
-      <Box align="center">
-        <Spinner
-          border={[
-            { side: "all", color: "background-contrast", size: "medium" },
-            { side: "right", color: "brand", size: "medium" },
-            { side: "top", color: "brand", size: "medium" },
-            { side: "left", color: "brand", size: "medium" },
-          ]}
-        />
-      </Box>
-    );
+    <GlobalSpinner />;
   }
 
   return (
@@ -68,19 +74,24 @@ export default function FormNew({ modalIsOpen, closeModal }) {
         actions={<Button label="close" onClick={closeModal} />}
       />
       <Formik
-        initialValues={{ company_name: "", phone: "" }}
+        initialValues={{ companyName: "", companyPhone: "" }}
         validate={(values) => {
           const errors = {};
-          if (!values.company_name) {
-            errors.company_name = "required";
+          if (!values.companyName) {
+            errors.companyName = "required";
           }
-          if (!values.phone) {
-            errors.phone = "required";
+          if (!values.companyPhone) {
+            errors.companyPhone = "required";
           }
           return errors;
         }}
         onSubmit={(values) => {
-          console.log(values);
+          companyService.createCompany(values).then((res) => {
+            if (res.successful) {
+              closeModal();
+              refetchData();
+            }
+          });
         }}
       >
         {({ errors, handleSubmit, handleChange, values, setFieldValue }) => (
@@ -90,49 +101,67 @@ export default function FormNew({ modalIsOpen, closeModal }) {
               handleSubmit();
             }}
           >
-            <FormField label="Company Name" error={errors.company_name}>
+            <FormField label="Company Name" error={errors.companyName}>
               <TextInput
-                value={values.company_name || ""}
-                name="company_name"
+                value={values.companyName || ""}
+                name="companyName"
                 onChange={handleChange}
               />
             </FormField>
-            <FormField label="Phone" error={errors.phone}>
+            <FormField label="companyPhone" error={errors.companyPhone}>
               <TextInput
-                value={values.phone || ""}
-                name="phone"
+                value={values.companyPhone || ""}
+                name="companyPhone"
                 type="number"
                 onChange={handleChange}
               />
             </FormField>
             <FormField label="Province" error={errors.province}>
               <Select
-                options={data?.data}
+                options={provinces ? provinces : []}
                 value={provinceValue || ""}
                 valueKey={{ key: "id", reduce: true }}
                 labelKey="name"
-                name="province"
+                name="provinceId"
                 onChange={({ value: nextValue }) => {
-                  const valueObject = data?.data.filter(
+                  const valueObject = provinces.filter(
                     (item) => item.id == nextValue
                   );
-                  setFieldValue("province", nextValue);
+                  setFieldValue("provinceId", nextValue);
                   setProvinceValue(nextValue);
                 }}
               />
             </FormField>
             <FormField label="District/County" error={errors.district}>
               <Select
-                options={["small", "medium", "large"]}
-                value={values.district || ""}
-                name="district"
-                onChange={handleChange}
+                options={districts ? districts : []}
+                value={districtValue || ""}
+                valueKey={{ key: "id", reduce: true }}
+                labelKey="name"
+                name="districtId"
+                onChange={({ value: nextValue }) => {
+                  setFieldValue("districtId", nextValue);
+                  setDistrictValue(nextValue);
+                }}
               />
             </FormField>
-            <FormField label="Company Bio" error={errors.bio}>
+            <FormField label="Ward" error={errors.ward}>
+              <Select
+                options={wards ? wards : []}
+                value={wardValue || ""}
+                valueKey={{ key: "id", reduce: true }}
+                labelKey="name"
+                name="wardId"
+                onChange={({ value: nextValue }) => {
+                  setFieldValue("wardId", nextValue);
+                  setWardValue(nextValue);
+                }}
+              />
+            </FormField>
+            <FormField label="Company Bio" error={errors.companyIntro}>
               <TextArea
-                value={values.bio || ""}
-                name="bio"
+                value={values.companyIntro || ""}
+                name="companyIntro"
                 onChange={handleChange}
               />
             </FormField>

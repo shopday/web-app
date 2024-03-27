@@ -28,6 +28,7 @@
     "person": {
       "name": "Your name",
       "email": "Email",
+      "username": "Username",
       "password": "Password"
     }
   },

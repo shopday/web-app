@@ -35,7 +35,9 @@ const Login = () => {
       .then((res) => {
         if (!res.successful) {
           // toast(res.message + " " + res.exception);
-          toast.error(res.exception);
+          toast.error(
+            "Sorry cannot log you in right now! Please connect with customer support"
+          );
           return;
         }
         const token = res?.data?.token;
@@ -97,7 +99,7 @@ const Login = () => {
                   >
                     <Box gap="medium">
                       <FormField
-                        label={t("register-page.person.email")}
+                        label={t("register-page.person.username")}
                         error={errors.username}
                       >
                         <TextInput
