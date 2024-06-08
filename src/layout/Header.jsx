@@ -8,10 +8,12 @@ import { FormDown } from "grommet-icons";
 import { useTranslation } from "react-i18next";
 
 const HeaderComponent = () => {
+
   const { isAuthenticated, name } = useSelector((state) => ({
     isAuthenticated: state.authentication.isAuthenticated,
     name: state.authentication.name,
   }));
+
 
   const dispath = useDispatch();
   if (!isAuthenticated) {
@@ -23,6 +25,7 @@ const HeaderComponent = () => {
 
   return (
     <header className="mx-auto container">
+
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -30,6 +33,7 @@ const HeaderComponent = () => {
         <a href="/" className="-m-1.5 p-1.5 text-black">
           <h1 className="text-2xl font-semibold">shopday</h1>
         </a>
+        {false == true &&
         <div className="flex gap-4 items-center">
           {isAuthenticated ? (
             <UserMenu name={name} />
@@ -57,7 +61,9 @@ const HeaderComponent = () => {
             {t(nextLanguage)}
           </Anchor>
         </div>
+        }
       </nav>
+
     </header>
   );
 };

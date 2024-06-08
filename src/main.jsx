@@ -16,6 +16,7 @@ import UserDashboard from "./user/layout/UserDashboard.jsx";
 import PageLayout from "./user/layout/DashboarPageLayout.jsx";
 import Companies from "./user/pages/Companies.jsx";
 import DashboardPageLayout from "./user/layout/DashboarPageLayout.jsx";
+import Maintenance from "./pages/Maintenance.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,12 +24,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Homepage />,
+        element: <Maintenance />,
         index: true,
       },
       {
-        path: "/shopday",
-        element: <Shopday />,
+        path: "/maintenance",
+        element: <Maintenance />,
       },
       {
         path: "/disclaimer",
